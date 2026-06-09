@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adova Meili Nutricream - Hilangkan Bekas Luka & Jerawat dalam Hitungan Minggu!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: #E8632A;
+    --primary-dark: #C84F1C;
+    --primary-soft: #FFF1E6;
+    --blue: #4FA8C7;
+    --blue-soft: #EAF5FB;
+    --dark: #2B3A4D;
+    --text: #3E4A5C;
+    --muted: #7A8699;
+    --bg: #FBF8F4;
+    --card: #FFFFFF;
+    --accent: #F2B544;
+    --success: #5BA876;
+    --border: #EDE6DC;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+  /* TOP BAR URGENCY */
+  .top-bar {
+    background: var(--dark); color: #fff;
+    text-align: center; padding: 10px 16px;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: .3px;
+  }
+  .top-bar span { color: var(--accent); }
+
+  /* NAVBAR */
+  header.nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; box-shadow: 0 2px 14px rgba(43,58,77,.06);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px; max-width: 1180px; margin: 0 auto;
+  }
+  .logo { font-size: 26px; font-weight: 800; color: var(--dark); letter-spacing: -1px; }
+  .logo span { color: var(--primary); }
+  .nav-cta {
+    background: var(--primary); color: #fff; padding: 11px 22px;
+    border-radius: 50px; text-decoration: none; font-weight: 700;
+    transition: .2s; font-size: 14px;
+    box-shadow: 0 6px 16px rgba(232,99,42,.28);
+  }
+  .nav-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #FFF5EC 0%, #FBF8F4 60%, #EAF5FB 100%);
+    padding: 60px 0 70px;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.05fr 1fr;
+    gap: 50px; align-items: center;
+  }
+  .hero-left .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; color: var(--primary);
+    padding: 8px 16px; border-radius: 50px;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 14px rgba(232,99,42,.14);
+    border: 1px solid var(--primary-soft);
+  }
+  .hero-left .badge::before {
+    content: "★"; color: var(--accent); font-size: 14px;
+  }
+  .hero-left h1 {
+    font-size: 46px; line-height: 1.12; margin-bottom: 20px;
+    color: var(--dark); font-weight: 800;
+    letter-spacing: -1px;
+  }
+  .hero-left h1 strong { color: var(--primary); }
+  .hero-left h1 u {
+    text-decoration: none;
+    background: linear-gradient(180deg, transparent 60%, #FFE7B8 60%);
+  }
+  .hero-left p.sub {
+    font-size: 17px; color: var(--text); margin-bottom: 26px;
+    max-width: 540px;
+  }
+  .hero-features {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;
+  }
+  .feat-pill {
+    background: #fff; padding: 9px 16px; border-radius: 50px;
+    font-size: 13px; font-weight: 600;
+    color: var(--dark);
+    border: 1px solid var(--border);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .feat-pill::before { content: "✓"; color: var(--success); font-weight: 800; }
+
+  .price-block {
+    display: inline-block;
+    background: #fff;
+    padding: 18px 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 22px;
+    box-shadow: 0 8px 22px rgba(43,58,77,.06);
+  }
+  .price-block .label { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: 1px; }
+  .price-block .old { text-decoration: line-through; color: var(--muted); font-size: 16px; margin-right: 10px; }
+  .price-block .now { color: var(--primary); font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+  .price-block .disc {
+    display: inline-block; background: var(--primary); color: #fff;
+    padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+    margin-left: 8px; vertical-align: middle;
+  }
+
+  /* === ATTRACTIVE CTA BUTTON === */
+  .btn-cta {
+    position: relative;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #FF7E3D 0%, #E8632A 50%, #D9531A 100%);
+    background-size: 200% 200%;
+    color: #fff !important;
+    padding: 18px 42px; border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800; font-size: 16px; letter-spacing: .5px;
+    box-shadow:
+      0 12px 28px rgba(232,99,42,.45),
+      0 4px 10px rgba(232,99,42,.3),
+      inset 0 1px 0 rgba(255,255,255,.25);
+    transition: transform .25s ease, box-shadow .25s ease;
+    overflow: hidden;
+    animation: ctaPulse 2.2s ease-in-out infinite, ctaGradient 4s ease infinite;
+    border: none; cursor: pointer;
+    z-index: 1;
+  }
+  .btn-cta::before {
+    content: ""; position: absolute; top: 0; left: -75%;
+    width: 50%; height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%);
+    transform: skewX(-20deg);
+    animation: ctaShine 3.5s ease-in-out infinite;
+    z-index: 2;
+  }
+  .btn-cta > * { position: relative; z-index: 3; }
+  .btn-cta .arrow {
+    display: inline-block;
+    transition: transform .25s ease;
+  }
+  .btn-cta:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 18px 36px rgba(232,99,42,.55),
+      0 6px 14px rgba(232,99,42,.35);
+  }
+  .btn-cta:hover .arrow { transform: translateX(6px); }
+  .btn-cta:active { transform: translateY(-1px) scale(.99); }
+
+  .btn-cta.lg { padding: 22px 50px; font-size: 18px; }
+
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 12px 28px rgba(232,99,42,.45), 0 4px 10px rgba(232,99,42,.3), inset 0 1px 0 rgba(255,255,255,.25), 0 0 0 0 rgba(232,99,42,.55); }
+    50%      { box-shadow: 0 12px 28px rgba(232,99,42,.45), 0 4px 10px rgba(232,99,42,.3), inset 0 1px 0 rgba(255,255,255,.25), 0 0 0 14px rgba(232,99,42,0); }
+  }
+  @keyframes ctaGradient {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+  @keyframes ctaShine {
+    0% { left: -75%; }
+    60%,100% { left: 130%; }
+  }
+
+  .hero-cta-wrap { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .hero-cta-note {
+    font-size: 12px; color: var(--muted);
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .hero-cta-note .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--success);
+    animation: dotBlink 1.4s ease-in-out infinite;
+  }
+  @keyframes dotBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: .35; transform: scale(.8); }
+  }
+  .hero-meta {
+    margin-top: 16px; font-size: 13px; color: var(--muted);
+    display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .hero-meta span::before { content: "● "; color: var(--success); }
+
+  .hero-right { text-align: center; position: relative; }
+  .hero-right img {
+    max-width: 100%; height: auto; border-radius: 22px;
+    box-shadow: 0 24px 60px rgba(28,127,163,.22);
+  }
+  .hero-right .float-badge {
+    position: absolute; top: 14px; right: 14px;
+    background: #fff; padding: 14px 18px; border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+    font-size: 13px; font-weight: 700; color: var(--dark);
+    line-height: 1.2;
+  }
+  .hero-right .float-badge b { color: var(--primary); display: block; font-size: 22px; }
+
+  /* SECTION */
+  section { padding: 70px 0; }
+  .section-title {
+    text-align: center; margin-bottom: 50px;
+  }
+  .section-title small {
+    display: inline-block; color: var(--primary); font-weight: 700;
+    letter-spacing: 3px; font-size: 12px; margin-bottom: 12px;
+    background: var(--primary-soft); padding: 6px 14px; border-radius: 20px;
+  }
+  .section-title h2 {
+    font-size: 36px; color: var(--dark); font-weight: 800;
+    letter-spacing: -.5px;
+  }
+  .section-title h2 span { color: var(--primary); }
+  .section-title p { color: var(--muted); margin-top: 12px; font-size: 16px; }
+
+  /* PROBLEM */
+  .problem { background: #fff; }
+  .prob-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    max-width: 980px; margin: 0 auto;
+  }
+  .prob-card {
+    text-align: center; padding: 26px 18px;
+    background: var(--bg); border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+  .prob-card .ico {
+    width: 56px; height: 56px; background: #fff;
+    border-radius: 50%; margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 6px 14px rgba(0,0,0,.05);
+  }
+  .prob-card h4 { font-size: 15px; color: var(--dark); }
+
+  /* INGREDIENTS */
+  .ingredients { background: var(--bg); }
+  .ing-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 26px;
+  }
+  .ing-card {
+    background: #fff;
+    border-radius: 18px; padding: 36px 32px;
+    border: 1px solid var(--border);
+    transition: .3s;
+  }
+  .ing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(43,58,77,.08); }
+  .ing-card .ico {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 64px; height: 64px;
+    background: var(--primary-soft); color: var(--primary);
+    border-radius: 18px; font-size: 22px; font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .ing-card h3 { font-size: 22px; margin-bottom: 10px; color: var(--dark); }
+  .ing-card p { color: var(--text); font-size: 15px; }
+
+  /* BENEFITS */
+  .benefits { background: #fff; }
+  .ben-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+  }
+  .ben-card {
+    background: var(--bg); padding: 28px 22px; border-radius: 16px;
+    text-align: center; transition: .3s;
+    border: 1px solid var(--border);
+  }
+  .ben-card:hover { transform: translateY(-5px); box-shadow: 0 16px 30px rgba(43,58,77,.08); border-color: var(--primary-soft); }
+  .ben-card .check {
+    width: 48px; height: 48px; background: var(--success);
+    color: #fff; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 14px; font-weight: 800;
+  }
+  .ben-card h4 { font-size: 15px; color: var(--dark); }
+
+  /* TESTIMONIAL */
+  .testimonial { background: var(--bg); }
+  .test-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .test-card {
+    background: #fff; padding: 28px 24px; border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+  .stars { color: var(--accent); margin-bottom: 12px; letter-spacing: 2px; }
+  .test-card p { font-size: 14px; color: var(--text); margin-bottom: 18px; font-style: italic; }
+  .test-author { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+  }
+  .test-author .name { font-weight: 700; font-size: 14px; color: var(--dark); }
+  .test-author .role { font-size: 12px; color: var(--muted); }
+
+  /* GALLERY */
+  .gallery { background: #fff; }
+  .gal-stack {
+    display: flex; flex-direction: column;
+    gap: 20px; max-width: 720px; margin: 0 auto;
+  }
+  .gal-stack img {
+    width: 100%; height: auto; display: block;
+    border-radius: 16px;
+    transition: .3s;
+    box-shadow: 0 8px 22px rgba(43,58,77,.08);
+  }
+  .gal-stack img:hover { transform: translateY(-3px); }
+
+  /* HOW TO USE */
+  .how { background: var(--bg); }
+  .how-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
+  }
+  .step {
+    background: #fff; padding: 32px 24px; border-radius: 18px;
+    position: relative; border: 1px solid var(--border);
+  }
+  .step .num {
+    position: absolute; top: -22px; left: 24px;
+    width: 44px; height: 44px; background: var(--primary); color: #fff;
+    border-radius: 50%; font-size: 18px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 18px rgba(232,99,42,.32);
+  }
+  .step h4 { font-size: 18px; margin: 16px 0 10px; color: var(--dark); }
+  .step p { color: var(--text); font-size: 14px; }
+
+  /* OFFER / CTA */
+  .offer {
+    background: linear-gradient(135deg, #FFF5EC 0%, #FFEDDC 100%);
+  }
+  .offer-card {
+    background: #fff; max-width: 720px; margin: 0 auto;
+    border-radius: 24px; padding: 50px 40px; text-align: center;
+    box-shadow: 0 20px 60px rgba(43,58,77,.12);
+    border: 1px solid var(--primary-soft);
+  }
+  .offer-card .tag {
+    display: inline-block; background: var(--primary); color: #fff;
+    padding: 6px 18px; border-radius: 20px;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+  .offer-card h2 { font-size: 32px; color: var(--dark); margin-bottom: 14px; letter-spacing: -.5px; }
+  .offer-card .price-large {
+    margin: 24px 0; display: flex; align-items: center; justify-content: center; gap: 14px;
+    flex-wrap: wrap;
+  }
+  .offer-card .old-price {
+    text-decoration: line-through; color: var(--muted); font-size: 22px;
+  }
+  .offer-card .new-price {
+    color: var(--primary); font-size: 48px; font-weight: 800; letter-spacing: -2px;
+  }
+  .offer-card .disc-pill {
+    background: var(--success); color: #fff; padding: 6px 14px;
+    border-radius: 20px; font-size: 12px; font-weight: 700;
+  }
+  .countdown {
+    display: flex; justify-content: center; gap: 12px; margin: 24px 0;
+  }
+  .cd-box {
+    background: var(--dark); color: #fff; padding: 12px 16px;
+    border-radius: 10px; min-width: 64px;
+  }
+  .cd-box b { display: block; font-size: 22px; font-weight: 800; }
+  .cd-box span { font-size: 10px; opacity: .7; letter-spacing: 1px; }
+
+  .cta-btn { /* legacy fallback - no longer used directly */ }
+
+  .trust {
+    display: flex; justify-content: center; gap: 24px;
+    margin-top: 28px; flex-wrap: wrap; font-size: 13px; color: var(--muted);
+  }
+  .trust span::before { content: "✓ "; color: var(--success); font-weight: 800; }
+
+  /* FAQ */
+  .faq { background: #fff; }
+  .faq-list { max-width: 780px; margin: 0 auto; }
+  .faq-item {
+    background: var(--bg); border-radius: 14px; padding: 22px 24px;
+    margin-bottom: 14px; border: 1px solid var(--border);
+  }
+  .faq-item h4 { color: var(--dark); font-size: 16px; margin-bottom: 8px; }
+  .faq-item h4::before { content: "Q: "; color: var(--primary); font-weight: 800; }
+  .faq-item p { color: var(--text); font-size: 14px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); color: #c2cdde; padding: 40px 0 20px;
+    text-align: center; font-size: 14px;
+  }
+  footer .logo { color: #fff; margin-bottom: 10px; display: inline-block; }
+  footer p { margin-bottom: 6px; }
+
+  /* SOCIAL PROOF NOTIFICATION */
+  .sp-notif {
+    position: fixed; bottom: 20px; left: 20px;
+    background: #fff; padding: 14px 18px 14px 14px;
+    border-radius: 14px; box-shadow: 0 14px 36px rgba(43,58,77,.18);
+    display: flex; align-items: center; gap: 14px;
+    max-width: 340px; z-index: 999;
+    border: 1px solid var(--border);
+    transform: translateY(140%); opacity: 0;
+    transition: all .5s cubic-bezier(.4,.2,.2,1);
+    font-size: 13px;
+  }
+  .sp-notif.show { transform: translateY(0); opacity: 1; }
+  .sp-notif .sp-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 15px; flex-shrink: 0;
+  }
+  .sp-notif .sp-text { flex: 1; line-height: 1.35; }
+  .sp-notif .sp-text b { color: var(--dark); }
+  .sp-notif .sp-text small { display: block; color: var(--muted); font-size: 11px; margin-top: 4px; }
+  .sp-notif .sp-close {
+    position: absolute; top: 6px; right: 8px; cursor: pointer;
+    background: none; border: none; color: var(--muted); font-size: 16px;
+  }
+  .sp-notif .sp-check { color: var(--success); font-weight: 800; }
+
+  /* STICKY BUY BAR (mobile) */
+  .sticky-buy {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #fff; padding: 12px 16px;
+    box-shadow: 0 -6px 22px rgba(0,0,0,.1);
+    z-index: 95;
+    align-items: center; justify-content: space-between;
+    gap: 12px;
+  }
+  .sticky-buy .price { font-weight: 800; color: var(--primary); font-size: 18px; }
+  .sticky-buy .price small { display: block; color: var(--muted); font-size: 10px; text-decoration: line-through; font-weight: 600;}
+  .sticky-buy a {
+    background: linear-gradient(135deg, #FF7E3D, #D9531A);
+    color: #fff; padding: 13px 24px;
+    border-radius: 50px; text-decoration: none; font-weight: 800;
+    font-size: 14px; display: inline-flex; align-items: center; gap: 6px;
+    box-shadow: 0 8px 18px rgba(232,99,42,.4);
+    animation: ctaPulse 2.2s ease-in-out infinite;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .hero-grid, .ing-grid { grid-template-columns: 1fr; }
+    .ben-grid, .how-grid, .test-grid { grid-template-columns: 1fr; }
+    .prob-grid { grid-template-columns: 1fr 1fr; }
+    .gal-stack { max-width: 100%; }
+    .hero-left h1 { font-size: 32px; }
+    .section-title h2 { font-size: 26px; }
+    .offer-card { padding: 36px 22px; }
+    .offer-card h2 { font-size: 24px; }
+    .offer-card .new-price { font-size: 38px; }
+    .sticky-buy { display: flex; }
+    body { padding-bottom: 70px; }
+    .sp-notif { left: 12px; right: 12px; bottom: 80px; max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  ⚡ <span>FLASH SALE HARI INI</span> · Diskon 50% + Free Ongkir · Stok Terbatas
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">adova<span>.</span></div>
+    <a href="#beli" class="nav-cta">Pesan Sekarang</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <span class="badge">TERDAFTAR BPOM · BESTSELLER 2026</span>
+      <h1>Bekas Luka & Jerawat <u>Memudar</u> dalam <strong>14 Hari</strong> atau Uang Kembali!</h1>
+      <p class="sub">Ribuan wanita Indonesia sudah membuktikan — <b>Adova Meili Nutricream</b> dengan 4% Niacinamide & Aloe Vera asli menyamarkan bekas luka, jerawat, & flek hitam tanpa iritasi.</p>
+      <div class="hero-features">
+        <div class="feat-pill">4% Niacinamide</div>
+        <div class="feat-pill">Aloe Barbadensis</div>
+        <div class="feat-pill">0% Paraben</div>
+        <div class="feat-pill">Aman BPOM</div>
+      </div>
+
+      <div class="price-block">
+        <div class="label">HARGA SPESIAL HARI INI</div>
+        <div>
+          <span class="old">Rp 330.000</span>
+          <span class="now">Rp 165.000</span>
+          <span class="disc">HEMAT 50%</span>
+        </div>
+      </div>
+
+      <div class="hero-cta-wrap">
+        <a href="#beli" class="btn-cta">
+          <span>🛒 PESAN SEKARANG</span>
+          <span class="arrow">→</span>
+        </a>
+        <span class="hero-cta-note"><span class="dot"></span> 27 orang lagi melihat produk ini</span>
+      </div>
+
+      <div class="hero-meta" style="margin-top: 20px;">
+        <span>Gratis Ongkir</span>
+        <span>COD Tersedia</span>
+        <span>Garansi 100%</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/foto-utama.jpg" alt="Adova Meili Nutricream" />
+      <div class="float-badge">
+        <b>50%</b>
+        DISKON
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-title">
+      <small>MASALAH KULIT</small>
+      <h2>Kamu Mengalami <span>Masalah Ini?</span></h2>
+      <p>Adova Meili Nutricream adalah solusinya</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="ico">😣</div>
+        <h4>Bekas Jerawat Membandel</h4>
+      </div>
+      <div class="prob-card">
+        <div class="ico">🩹</div>
+        <h4>Bekas Luka Lama</h4>
+      </div>
+      <div class="prob-card">
+        <div class="ico">🔆</div>
+        <h4>Flek Hitam di Wajah</h4>
+      </div>
+      <div class="prob-card">
+        <div class="ico">😔</div>
+        <h4>Kulit Tidak Merata</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredients">
+  <div class="container">
+    <div class="section-title">
+      <small>KANDUNGAN AKTIF</small>
+      <h2>Diformulasi dengan <span>Bahan Aktif Premium</span></h2>
+      <p>2 superstar ingredient yang sudah terbukti klinis</p>
+    </div>
+    <div class="ing-grid">
+      <div class="ing-card">
+        <div class="ico">4%</div>
+        <h3>Niacinamide</h3>
+        <p>Bahan aktif premium yang membantu menyamarkan flek hitam, meratakan warna kulit, dan membuat wajah tampak <b>lebih cerah & bercahaya</b> secara alami.</p>
+      </div>
+      <div class="ing-card">
+        <div class="ico">🌿</div>
+        <h3>Aloe Barbadensis Leaf Extract</h3>
+        <p>Moisturizer alami yang menjaga kelembaban kulit, menenangkan kemerahan, dan membuat kulit <b>halus, lembut, dan kenyal</b> sepanjang hari.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="container">
+    <div class="section-title">
+      <small>MANFAAT NYATA</small>
+      <h2>1 Produk untuk <span>6 Masalah Kulit</span></h2>
+      <p>Sekali pakai, banyak manfaat — hemat budget skincare-mu</p>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-card"><div class="check">✓</div><h4>Menyamarkan Bekas Luka Benda Tajam</h4></div>
+      <div class="ben-card"><div class="check">✓</div><h4>Menyamarkan Bekas Jerawat Membandel</h4></div>
+      <div class="ben-card"><div class="check">✓</div><h4>Menyamarkan Bekas Cacar</h4></div>
+      <div class="ben-card"><div class="check">✓</div><h4>Menyamarkan Bekas Jahitan</h4></div>
+      <div class="ben-card"><div class="check">✓</div><h4>Menyamarkan Bekas Knalpot / Air Panas</h4></div>
+      <div class="ben-card"><div class="check">✓</div><h4>Menyamarkan Bekas Koreng</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial">
+  <div class="container">
+    <div class="section-title">
+      <small>TESTIMONI PELANGGAN</small>
+      <h2>Mereka Sudah <span>Membuktikan Sendiri</span></h2>
+      <p>Bergabung bersama 10.000+ pelanggan puas dari seluruh Indonesia</p>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Awalnya cuma coba-coba karena bekas jerawat banyak banget. Pakai 2 minggu udah keliatan banget memudar! Wajah jadi makin pede!"</p>
+        <div class="test-author">
+          <div class="avatar">SR</div>
+          <div>
+            <div class="name">Siti R.</div>
+            <div class="role">Jakarta · Pelanggan Tetap</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Bekas luka knalpot di kaki yg udah 2 tahun ngga ilang, akhirnya samar setelah rutin pakai krim Adova ini. Recommended banget!"</p>
+        <div class="test-author">
+          <div class="avatar">DA</div>
+          <div>
+            <div class="name">Dewi A.</div>
+            <div class="role">Surabaya · Repeat Order</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>"Teksturnya lembut, nggak bikin perih. Bekas cacar di muka udah memudar drastis. Worth it banget harganya!"</p>
+        <div class="test-author">
+          <div class="avatar">RP</div>
+          <div>
+            <div class="name">Rina P.</div>
+            <div class="role">Bandung · Pelanggan Baru</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="container">
+    <div class="section-title">
+      <small>GALERI PRODUK</small>
+      <h2>Lihat Lebih Dekat <span>Adova Meili</span></h2>
+      <p>Foto-foto produk asli dari berbagai sudut</p>
+    </div>
+    <div class="gal-stack">
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-1.jpg" alt="Adova Meili Nutricream 1" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-2.jpg" alt="Adova Meili Nutricream 2" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-3.jpg" alt="Adova Meili Nutricream 3" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-4.jpg" alt="Adova Meili Nutricream 4" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-5.jpg" alt="Adova Meili Nutricream 5" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-6.jpg" alt="Adova Meili Nutricream 6" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-7.jpg" alt="Adova Meili Nutricream 7" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-8.jpg" alt="Adova Meili Nutricream 8" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-9.jpg" alt="Adova Meili Nutricream 9" />
+      <img src="Adova Meili Nutricream Penghilang Bekas Luka dan Bekas Jerawat 60ml/galeri-10.jpg" alt="Adova Meili Nutricream 10" />
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO USE -->
+<section class="how">
+  <div class="container">
+    <div class="section-title">
+      <small>CARA PAKAI</small>
+      <h2>Mudah Digunakan <span>Setiap Hari</span></h2>
+      <p>Cukup 3 langkah sederhana untuk hasil maksimal</p>
+    </div>
+    <div class="how-grid">
+      <div class="step">
+        <div class="num">1</div>
+        <h4>Bersihkan Tangan</h4>
+        <p>Pastikan tangan bersih sebelum mengaplikasikan Adova Meili Nutricream ke kulit.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h4>Oleskan Tipis</h4>
+        <p>Ambil secukupnya, oleskan tipis ke area bekas luka atau flek hitam yang ingin disamarkan.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h4>Rutin 2–5x Sehari</h4>
+        <p>Gunakan setiap 5 jam sekali atau 2–5 kali sehari untuk hasil yang maksimal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer" id="beli">
+  <div class="container">
+    <div class="offer-card">
+      <span class="tag">⚡ FLASH SALE BERAKHIR DALAM</span>
+      <div class="countdown">
+        <div class="cd-box"><b id="cd-h">02</b><span>JAM</span></div>
+        <div class="cd-box"><b id="cd-m">45</b><span>MENIT</span></div>
+        <div class="cd-box"><b id="cd-s">12</b><span>DETIK</span></div>
+      </div>
+      <h2>Jangan Sampai Kehabisan!</h2>
+      <p style="color: var(--muted); font-size: 15px;">Adova Meili Nutricream 60ml — Solusi Tuntas Bekas Luka & Jerawat</p>
+      <div class="price-large">
+        <span class="old-price">Rp 330.000</span>
+        <span class="new-price">Rp 165.000</span>
+        <span class="disc-pill">HEMAT 50%</span>
+      </div>
+      <a href="#" class="btn-cta lg">
+        <span>🛒 PESAN SEKARANG — KLAIM DISKON 50%</span>
+        <span class="arrow">→</span>
+      </a>
+      <div class="trust">
+        <span>Terdaftar BPOM</span>
+        <span>Gratis Ongkir</span>
+        <span>COD Tersedia</span>
+        <span>Garansi Uang Kembali</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-title">
+      <small>FAQ</small>
+      <h2>Pertanyaan <span>Yang Sering Ditanya</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>Apakah Adova Meili Nutricream aman untuk semua jenis kulit?</h4>
+        <p>Aman. Sudah terdaftar BPOM NA18230114166 dan bebas paraben. Cocok untuk kulit normal, kering, dan sensitif.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Berapa lama hasilnya terlihat?</h4>
+        <p>Mayoritas pelanggan kami melihat perubahan signifikan dalam 14 hari penggunaan rutin 2–5x sehari.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Apakah ada garansi?</h4>
+        <p>Ya! Kami berikan garansi uang kembali jika produk tidak sesuai ekspektasi.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Bisa COD (bayar di tempat)?</h4>
+        <p>Bisa! Kami menerima pembayaran COD ke seluruh Indonesia plus gratis ongkir untuk wilayah tertentu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo">adova<span style="color:var(--primary)">.</span></div>
+    <p>Adova Meili Nutricream — Bright & Moist Cream Special Care for Skin</p>
+    <p>BPOM NA18230114166 · Netto 60ml</p>
+    <p style="margin-top: 14px; opacity: .6;">© 2026 Adova. Jauhkan dari paparan sinar matahari dan panas secara langsung.</p>
+  </div>
+</footer>
+
+<!-- STICKY BUY BAR (Mobile) -->
+<div class="sticky-buy">
+  <div class="price">
+    Rp 165.000
+    <small>Rp 330.000</small>
+  </div>
+  <a href="#beli">PESAN SEKARANG <span>→</span></a>
+</div>
+
+<!-- SOCIAL PROOF NOTIF -->
+<div class="sp-notif" id="spNotif">
+  <div class="sp-avatar" id="spAv">A</div>
+  <div class="sp-text">
+    <b id="spName">Annisa</b> dari <span id="spCity">Jakarta</span> baru saja membeli <span class="sp-check">✓</span>
+    <small id="spTime">2 menit yang lalu</small>
+  </div>
+</div>
+
+<script>
+  // === Countdown ===
+  let total = 2*3600 + 45*60 + 12;
+  setInterval(() => {
+    if (total <= 0) total = 3*3600;
+    total--;
+    const h = String(Math.floor(total/3600)).padStart(2,'0');
+    const m = String(Math.floor((total%3600)/60)).padStart(2,'0');
+    const s = String(total%60).padStart(2,'0');
+    document.getElementById('cd-h').textContent = h;
+    document.getElementById('cd-m').textContent = m;
+    document.getElementById('cd-s').textContent = s;
+  }, 1000);
+
+  // === Social Proof Notification ===
+  const names = [
+    ['Annisa','Jakarta'],['Dewi','Surabaya'],['Rina','Bandung'],
+    ['Putri','Yogyakarta'],['Maya','Medan'],['Lia','Semarang'],
+    ['Nurul','Makassar'],['Sari','Bekasi'],['Wulan','Tangerang'],
+    ['Indah','Depok'],['Fitri','Palembang'],['Tika','Malang']
+  ];
+  const times = ['baru saja','1 menit yang lalu','2 menit yang lalu','5 menit yang lalu','8 menit yang lalu','12 menit yang lalu'];
+  const notif = document.getElementById('spNotif');
+  let i = 0;
+  function showNotif(){
+    const [n, c] = names[i % names.length];
+    document.getElementById('spName').textContent = n;
+    document.getElementById('spCity').textContent = c;
+    document.getElementById('spAv').textContent = n[0];
+    document.getElementById('spTime').textContent = times[Math.floor(Math.random()*times.length)];
+    notif.classList.add('show');
+    setTimeout(() => notif.classList.remove('show'), 5000);
+    i++;
+  }
+  setTimeout(showNotif, 3000);
+  setInterval(showNotif, 12000);
+</script>
+
+</body>
+</html>
